@@ -1,0 +1,5 @@
+add_subdirectory( nodepiz )
+add_subdirectory( clpiz )
+add_subdirectory( kpizd )
+add_subdirectory( piz-launcher )
+add_subdirectory( piz-blocklog )
