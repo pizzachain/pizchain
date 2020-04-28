@@ -144,7 +144,7 @@ def allocateFunds(b, e):
     dist = numpy.random.pareto(1.161, e - b).tolist() # 1.161 = 80/20 rule
     dist.sort()
     dist.reverse()
-    factor = 1_00_000 / sum(dist)
+    factor = 1_000_000_000 / sum(dist)
     total = 0
     for i in range(b, e):
         funds = round(factor * dist[i - b] * 10000)
@@ -182,7 +182,7 @@ def createStakedAccounts(b, e):
 def regProducers(b, e):
     for i in range(b, e):
         a = accounts[i]
-        retry(args.clpiz + 'system regproducer ' + a['name'] + ' ' + a['pub'] + ' https://' + a['name'] + '.com' + '/' + a['pub'])
+        retry(args.clpiz + 'system regproducer ' + a['name'] + ' ' + a['pub'] + ' https://')
 
 def listProducers():
     run(args.clpiz + 'system listproducers')
@@ -421,7 +421,7 @@ parser.add_argument('--max-unstaked', metavar='', help="Maximum unstaked funds",
 parser.add_argument('--producer-limit', metavar='', help="Maximum number of producers. (0 = no limit)", type=int, default=4)
 parser.add_argument('--min-producer-funds', metavar='', help="Minimum producer funds", type=float, default=100.0000)
 parser.add_argument('--num-producers-vote', metavar='', help="Number of producers for which each user votes", type=int, default=20)
-parser.add_argument('--num-voters', metavar='', help="Number of voters", type=int, default=65)
+parser.add_argument('--num-voters', metavar='', help="Number of voters", type=int, default=55)
 parser.add_argument('--num-senders', metavar='', help="Number of users to transfer funds randomly", type=int, default=10)
 parser.add_argument('--producer-sync-delay', metavar='', help="Time (s) to sleep to allow producers to sync", type=int, default=80)
 parser.add_argument('-a', '--all', action='store_true', help="Do everything marked with (*)")
